@@ -1,6 +1,7 @@
 const express = require("express");
 const config = require("config");
 const mongoose = require("mongoose");
+const users = require("./routes/users");
 const app = express();
 
 mongoose
@@ -12,7 +13,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
 
-app.use("/api/v1/users/register");
+app.use(express.json());
+app.use("/api/v1/users", users); //register
 app.use("/", (req, res) => {
   res.status(200).send("Hello");
 });
