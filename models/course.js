@@ -19,8 +19,6 @@ const courseSchema = new mongoose.Schema({
   AuthorID: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    minlength: 5,
-    maxlength: 1024,
   },
 });
 
@@ -30,7 +28,7 @@ function validateCourse(course) {
   const schema = Joi.object({
     module: Joi.string().min(1).max(255).required(),
     grade: Joi.string().min(1).max(255).required(),
-    AuthorID: Joi.objectId().required(),
+    // AuthorID: Joi.objectId().required(),
   });
 
   return schema.validate(course);
