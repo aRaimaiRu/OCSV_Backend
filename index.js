@@ -18,11 +18,11 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
-app.use("/", (req, res, next) => {
-  console.log(req);
-  // res.status(200).send("Hello");
-  next();
-});
+// app.use("/", (req, res, next) => {
+//   console.log(req);
+//   // res.status(200).send("Hello");
+//   next();
+// });
 
 app.use("/api/v1/users", users); //register
 app.use("/api/v1/auth", login);
