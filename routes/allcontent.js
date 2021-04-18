@@ -114,8 +114,6 @@ router.put("/edit", auth, async (req, res) => {
 });
 
 router.delete("/delete", auth, async (req, res) => {
-  console.log("req = ", req.body);
-
   const { _id, ...bodyNoID } = req.body;
   const { id_error } = validate_id({ _id });
   if (id_error) return res.status(400).send(error.details[0].message);
