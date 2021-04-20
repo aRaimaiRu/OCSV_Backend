@@ -2,33 +2,36 @@ const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 
-const contentSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
+const contentSchema = new mongoose.Schema(
+  {
+    id: {
+      type: Number,
+      required: true,
+    },
+    content: {
+      type: String,
+    },
+    sub: {
+      type: Number,
+    },
+    contentType: {
+      type: String,
+      maxlength: 32,
+    },
+    Explain: {
+      type: String,
+      maxlength: 2048,
+    },
+    outLink: {
+      type: String,
+      maxlength: 2048,
+    },
+    Answer: [Number],
+    Choice: [String],
+    Picture: [String],
   },
-  content: {
-    type: String,
-  },
-  sub: {
-    type: Number,
-  },
-  contentType: {
-    type: String,
-    maxlength: 32,
-  },
-  Explain: {
-    type: String,
-    maxlength: 2048,
-  },
-  outLink: {
-    type: String,
-    maxlength: 2048,
-  },
-  Answer: [Number],
-  Choice: [String],
-  Picture: [String],
-});
+  { _id: false }
+);
 
 const Content = mongoose.model("Content", contentSchema);
 const schema = Joi.object({

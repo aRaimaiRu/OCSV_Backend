@@ -2,20 +2,23 @@ const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 
-const subSchema = new mongoose.Schema({
-  id: {
-    type: Number,
+const subSchema = new mongoose.Schema(
+  {
+    id: {
+      type: Number,
+    },
+    main: {
+      type: Number,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+      maxlength: 255,
+    },
   },
-  main: {
-    type: Number,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-    maxlength: 255,
-  },
-});
+  { _id: false }
+);
 
 const Sub = mongoose.model("SubTopic", subSchema);
 
