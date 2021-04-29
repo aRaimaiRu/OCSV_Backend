@@ -81,7 +81,8 @@ router.put("/edit", auth, async (req, res) => {
     const { id_error } = validate_id({ _id });
     if (id_error) return res.status(400).send(error.details[0].message);
     const { error } = validate(bodyNoID);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error)
+      return res.status(400).send("validate", error.details[0].message);
 
     // const { _id, module, grade, mainTopic, subTopic, content } = req.body;
     // let myAllContent = await AllContent.findById(_id);
